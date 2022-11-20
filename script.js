@@ -17,40 +17,40 @@ fetch('https://americas.api.riotgames.com/lor/ranked/v1/leaderboards?api_key=RGA
 
 //data
 function displayLeader(data){
-    let displayPlayers = data.players[0];
+    let displayPlayers =  data.players[0];
     let displayDiv = document.getElementById('leaderboard');
     let displayDivRank =document.getElementById('rank')
-console.log(displayPlayers)
+
 //name
 let playerName = displayPlayers.name 
 let leaderBoard = document.createElement('h1');
 leaderBoard.innerHTML= playerName;
 displayDiv.appendChild(leaderBoard);
 //rank
-let playerRank =displayPlayers.rank 
+let playerRank =`Rank #: ${displayPlayers.rank}`
 let leaderContent = document.createElement('p');
 leaderContent.innerHTML=playerRank;
 displayDivRank.appendChild(leaderContent)
 
-let playerlp = displayPlayers.lp 
+let playerlp = `lp: ${displayPlayers.lp}`
 let leaderlp = document.createElement('p');
 leaderlp.innerHTML=playerlp;
 displayDivRank.appendChild(leaderlp)
 
 
-var player =document.createElement('h1')
+var player =document.createElement('h3')
 var currentPlayerContainer = document.getElementById('current-player');
-player.textContent='top player';
+player.textContent='User Name';
 currentPlayerContainer.appendChild(player)
 
 var playerData = data.players
 var playerPosition =data.rank
 
-for(let i=0; i<10; i++){
+for(let i=1; i<10; i++){
     var currentPlayer = document.createElement('p');
-    currentPlayer.textContent = `${playerData[i].name}`
+    currentPlayer.textContent = `Rank: ${playerData[i].rank} User: ${playerData[i].name} lp:${playerData[i].lp}`
     currentPlayerContainer.appendChild(currentPlayer)
-    console.log(playerData)
+    
     
 }
 }
